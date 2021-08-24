@@ -6,9 +6,7 @@ import numpy as np
 from PIL import Image
 
 import json
-import pandas as pd
 from pathlib import Path
-from itertools import repeat
 from collections import OrderedDict
 
 def ensure_dir(dirname):
