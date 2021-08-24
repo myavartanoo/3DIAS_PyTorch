@@ -24,7 +24,7 @@ cd 3DIAS_Pytorch
 * numpy
 * Pillow
 * open3d
-* PyMCubes
+* PyMCubes (or build this [repo](https://github.com/tatsy/torchmcubes))
 
 Install dependencies in a conda environment.
 ```
