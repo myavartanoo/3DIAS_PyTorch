@@ -20,7 +20,7 @@ cd 3DIAS_Pytorch
 
 ### Dependencies
 * Python 3.8.5
-* PyTorch >= 1.0.0
+* PyTorch 1.7.1
 * numpy
 * Pillow
 * open3d
