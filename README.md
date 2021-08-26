@@ -75,9 +75,9 @@ TBD
 ## Citation
 If you find our code or paper useful, please consider citing
 
-    @inproceedings{Occupancy Networks,
-        title = {Occupancy Networks: Learning 3D Reconstruction in Function Space},
-        author = {Mescheder, Lars and Oechsle, Michael and Niemeyer, Michael and Nowozin, Sebastian and Geiger, Andreas},
-        booktitle = {Proceedings IEEE Conf. on Computer Vision and Pattern Recognition (CVPR)},
-        year = {2019}
+    @inproceedings{3DIAS,
+        title = {3DIAS: 3D Shape Reconstruction with Implicit Algebraic Surfaces},
+        author = {Mohsen Yavartanoo, JaeYoung Chung, Reyhaneh Neshatavar, Kyoung Mu Lee},
+        booktitle = {Proceedings IEEE Conf. on International Conference on Computer Vision (ICCV)},
+        year = {2021}
     }
