@@ -38,21 +38,17 @@ pip install -r requirements.txt
 Download `config.json` and `checkpoint-epoch#.pth` from below links and save in `weigths` folder.
 Note that we get `Multi-class` weight by training with all-classes and `Single-class` weight by training with each class
 
-##### Multi-class
-[Dropbox](https://www.dropbox.com/sh/z7ccstte6i69jju/AABaaCJ9LgKw-JT1Mdf0Tz-ta?dl=0) or [Mirror](http://data.cv.snu.ac.kr:8008/webdav/dataset/3DIAS/multi_class.zip)
+#### Multi-class
+> [Dropbox](https://www.dropbox.com/sh/z7ccstte6i69jju/AABaaCJ9LgKw-JT1Mdf0Tz-ta?dl=0) or [Mirror](http://data.cv.snu.ac.kr:8008/webdav/dataset/3DIAS/multi_class.zip)
 
-##### Single-class
+#### Single-class
 To download all the single-class weigths, run
 ```
-wget --recursive --no-parent http://data.cv.snu.ac.kr:8008/webdav/dataset/3DIAS/single_class/
+sh download_weights.sh
 ```
 
 Or you can get the weights one-by-one.
-```
-> [airplane](http://data.cv.snu.ac.kr:8008/webdav/dataset/3DIAS/single_class/02691156_airplane.zip) [bench](http://data.cv.snu.ac.kr:8008/webdav/dataset/3DIAS/single_class/02828884_bench.zip) [cabinet](http://data.cv.snu.ac.kr:8008/webdav/dataset/3DIAS/single_class/02933112_cabinet.zip) [car](http://data.cv.snu.ac.kr:8008/webdav/dataset/3DIAS/single_class/02958343_car.zip) [chair](http://data.cv.snu.ac.kr:8008/webdav/dataset/3DIAS/single_class/03001627_chair.zip)   
-> [display](http://data.cv.snu.ac.kr:8008/webdav/dataset/3DIAS/single_class/03211117_display.zip) [lamp](http://data.cv.snu.ac.kr:8008/webdav/dataset/3DIAS/single_class/03636649_lamp.zip) [speaker](http://data.cv.snu.ac.kr:8008/webdav/dataset/3DIAS/single_class/03691459_speaker.zip) [rifle](http://data.cv.snu.ac.kr:8008/webdav/dataset/3DIAS/single_class/04090263_rifle.zip) [sofa](http://data.cv.snu.ac.kr:8008/webdav/dataset/3DIAS/single_class/04256520_sofa.zip)   
-> [table](http://data.cv.snu.ac.kr:8008/webdav/dataset/3DIAS/single_class/04379243_table.zip) [phone](http://data.cv.snu.ac.kr:8008/webdav/dataset/3DIAS/single_class/04401088_phone.zip) [vessel](http://data.cv.snu.ac.kr:8008/webdav/dataset/3DIAS/single_class/04530566_vessel.zip)
-```
+> [airplane](http://data.cv.snu.ac.kr:8008/webdav/dataset/3DIAS/single_class/02691156_airplane.zip) / [bench](http://data.cv.snu.ac.kr:8008/webdav/dataset/3DIAS/single_class/02828884_bench.zip) / [cabinet](http://data.cv.snu.ac.kr:8008/webdav/dataset/3DIAS/single_class/02933112_cabinet.zip) / [car](http://data.cv.snu.ac.kr:8008/webdav/dataset/3DIAS/single_class/02958343_car.zip) / [chair](http://data.cv.snu.ac.kr:8008/webdav/dataset/3DIAS/single_class/03001627_chair.zip) / [display](http://data.cv.snu.ac.kr:8008/webdav/dataset/3DIAS/single_class/03211117_display.zip) / [lamp](http://data.cv.snu.ac.kr:8008/webdav/dataset/3DIAS/single_class/03636649_lamp.zip) / [speaker](http://data.cv.snu.ac.kr:8008/webdav/dataset/3DIAS/single_class/03691459_speaker.zip) / [rifle](http://data.cv.snu.ac.kr:8008/webdav/dataset/3DIAS/single_class/04090263_rifle.zip) / [sofa](http://data.cv.snu.ac.kr:8008/webdav/dataset/3DIAS/single_class/04256520_sofa.zip) / [table](http://data.cv.snu.ac.kr:8008/webdav/dataset/3DIAS/single_class/04379243_table.zip) / [phone](http://data.cv.snu.ac.kr:8008/webdav/dataset/3DIAS/single_class/04401088_phone.zip) / [vessel](http://data.cv.snu.ac.kr:8008/webdav/dataset/3DIAS/single_class/04530566_vessel.zip)
 
 
 
