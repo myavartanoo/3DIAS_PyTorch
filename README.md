@@ -70,20 +70,30 @@ To see the mesh, you can use [meshlab](https://www.meshlab.net/)
 
 If you want to visualize meshes with open3d, run with `--visualize` option as below.
 ```
-CUDA_VISIBLE_DEVICES=0 python demo.py --inputimg "./input/<image_name>.png" --config "./weights/config.json" --resume "./weights/checkpoint-epoch890.pth" --visualize
+python demo.py --device "0" --inputimg "./input/<image_name>.png" --config "./weights/config.json" --resume "./weights/checkpoint-epoch890.pth" --visualize
 ```
 
 The preprocessed dataset, training, testing code will be distributed soon.
-<!---
+
 ## Dataset
-TBD
+Dowload below two zip files and unzip in `data` folder.
+[images](http://data.cv.snu.ac.kr:8008/webdav/dataset/3DIAS/images.zip)
+[newDataPoints](http://data.cv.snu.ac.kr:8008/webdav/dataset/3DIAS/newDataPoints.zip)
 
 ## Training
-TBD
+To run the training code, 
+```
+python train.py --device "0" --config config.json --tag "exp_name"
+```
+Note that,
+1. the log and model will be saved at `trainer/save_dir` in `config.json`
+2. `--tag` is for the name of experiment
 
 ## Testing
-TBD
--->
+For each experiment, there are `config.json` file and `checkpoint-epoch###.pth` file.
+```
+python test.py --device "0" --config /path/to/saved_config/config.json --resume "/path/to/saved_model/checkpoint-epoch###.pth"
+```
 
 ## Citation
 If you find our code or paper useful, please consider citing
