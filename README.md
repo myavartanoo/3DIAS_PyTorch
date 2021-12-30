@@ -37,8 +37,8 @@ pip install -r requirements.txt
 ### Pretrained model
 Download `config.json` and `checkpoint-epoch#.pth` from below links and save in `weigths` folder.
 Note that we get `Multi-class` weight by training with all-classes and `Single-class` weight by training with each class
-**The pretrained model is updated at Dec. 30th 2021. Please update or download again**
-
+## NOTE: The pretrained model is updated at Dec. 31th 2021. 
+Please update or download again
 
 #### Multi-class
 <!-- [Dropbox](https://www.dropbox.com/sh/z7ccstte6i69jju/AABaaCJ9LgKw-JT1Mdf0Tz-ta?dl=0) --->
