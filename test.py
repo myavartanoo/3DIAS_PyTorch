@@ -28,7 +28,7 @@ def main(config):
         model = torch.nn.DataParallel(model)
     model.load_state_dict(state_dict)
 
-    checkname = str(config.resume).split('/')[7] # experiment date
+    checkname = str(config.run_id)
     os.makedirs('./visualization/'+checkname+"/functions/", exist_ok=True)
     os.makedirs('./visualization/'+checkname+"/valid_indices/", exist_ok=True)
     cls1_name = ['02691156', '02828884', '02933112', '02958343', '03001627', '03211117', '03636649', '03691459', '04090263', '04256520', '04379243', '04401088', '04530566']

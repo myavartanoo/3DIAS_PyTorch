@@ -23,6 +23,10 @@ class ConfigParser:
         self.resume = resume
         self.inputimg = inputimg
         self.visualize = visualize
+        if run_id is None:
+            self.run_id = "exp_test"
+        else:
+            self.run_id = run_id
 
         # set save_dir where trained model and log will be saved.
         save_dir = Path(self.config['trainer']['save_dir'])

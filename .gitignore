@@ -3,6 +3,7 @@ weights
 todo.md
 */__pycache__/*
 *.pyc
-data
+data/images
+data/newDataPoints
 visualization
 refactoringCode/

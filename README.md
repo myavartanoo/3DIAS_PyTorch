@@ -24,7 +24,7 @@ cd 3DIAS_Pytorch
 * numpy
 * Pillow
 * open3d
-* PyMCubes (or build this [repo](https://github.com/tatsy/torchmcubes))
+* torchmcubes 0.1.0 (see this [repo](https://github.com/tatsy/torchmcubes))
 
 Install dependencies in a conda environment.
 ```
@@ -64,7 +64,7 @@ Or you can get the weights one-by-one.
 You can now test our demo code on the provided input images in the `input` folder. (Or you can use other images in shapeNet.)
 To this end, simply run, 
 ```
-CUDA_VISIBLE_DEVICES=0 python demo.py --inputimg "./input/<image_name>.png" --config "./weights/config.json" --resume "./weights/checkpoint-epoch890.pth" 
+python demo.py --device "0" --inputimg "./input/<image_name>.png" --config "./weights/config.json" --resume "./weights/checkpoint-epoch890.pth" 
 ```
 The result meshes are saved in `output` folder. (We've created a few example meshes)
 * total.ply is a whole mesh
@@ -80,8 +80,8 @@ The preprocessed dataset, training, testing code will be distributed soon.
 
 
 ## (Preprocessed) Dataset
-Dowload below two zip files and unzip in `data` folder. [images](http://data.cv.snu.ac.kr:8008/webdav/dataset/3DIAS/images.zip) and [newDataPoints](http://data.cv.snu.ac.kr:8008/webdav/dataset/3DIAS/newDataPoints.zip)
-
+- Dowload below two zip files and unzip in `data` folder. [images](http://data.cv.snu.ac.kr:8008/webdav/dataset/3DIAS/images.zip) and [newDataPoints](http://data.cv.snu.ac.kr:8008/webdav/dataset/3DIAS/newDataPoints.zip)
+- `metadata.csv` contains the number of data for each class. If you want to train a specific class, use other csv file like in `metadata_03001627` for chair only
 
 ## Training
 To run the training code, 
@@ -91,14 +91,24 @@ python train.py --device "0" --config config.json --tag "exp_name"
 Note that,
 1. the log and model will be saved at `trainer/save_dir` in `config.json`. **You MUST change this path to your own path**
 2. `--tag` is for the name of experiment
-3. Now it is set to occupy 12GB in GPU. You can adjust by changing the `batch_size` at `config.json`
+
+#### GPU memory issue
+There is large tensor product in PI_funcs_generator() line 13,
+> PI_funcs = (coeff.unsqueeze(dim=1) * I.unsqueeze(dim=3)).sum(dim=2)\
+
+We can handle the tensor product since we use **Quadro RTX 8000 (48GB VRAM)** 
+There might be two solutions for the product of large tensors in the GPUs with small memory.
+1. Reduce the `batch_size` in `data_loader` in `config.json`
+2. Use for-loop, do iteratively summation 
+3. Use DDP (I didn't test this)
 
 
 ## Testing
 To run the test code, select the options `config.json` and `checkpoint-epoch###.pth` for the specific experiment.
 ```
-python test.py --device "0" --config /path/to/saved_config/config.json --resume "/path/to/saved_model/checkpoint-epoch###.pth"
+python test.py --device "0" --config /path/to/saved_config/config.json --resume "/path/to/saved_model/checkpoint-epoch###.pth" --tag "exp_name"
 ```
+In test code, `--tag` is just used as the **name** of the folder where the result will be saved.
 
 ## Citation
 If you find our code or paper useful, please consider citing

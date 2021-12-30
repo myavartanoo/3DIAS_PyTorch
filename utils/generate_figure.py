@@ -1,7 +1,7 @@
 import torch
 import numpy as np
 import open3d as o3d
-from mcubes import marching_cubes
+from torchmcubes import marching_cubes
 from utils.util import gen_polynomial_orders
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
