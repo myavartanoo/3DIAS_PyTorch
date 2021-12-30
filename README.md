@@ -37,9 +37,12 @@ pip install -r requirements.txt
 ### Pretrained model
 Download `config.json` and `checkpoint-epoch#.pth` from below links and save in `weigths` folder.
 Note that we get `Multi-class` weight by training with all-classes and `Single-class` weight by training with each class
+**The pretrained model is updated at Dec. 30th 2021. Please update or download again**
+
 
 #### Multi-class
-> [Dropbox](https://www.dropbox.com/sh/z7ccstte6i69jju/AABaaCJ9LgKw-JT1Mdf0Tz-ta?dl=0) or [Mirror](http://data.cv.snu.ac.kr:8008/webdav/dataset/3DIAS/multi_class.zip)
+<!-- [Dropbox](https://www.dropbox.com/sh/z7ccstte6i69jju/AABaaCJ9LgKw-JT1Mdf0Tz-ta?dl=0) --->
+> [Multi-class](http://data.cv.snu.ac.kr:8008/webdav/dataset/3DIAS/multi_class.zip)
 
 #### Single-class
 To download all the single-class weigths, run
@@ -75,10 +78,10 @@ python demo.py --device "0" --inputimg "./input/<image_name>.png" --config "./we
 
 The preprocessed dataset, training, testing code will be distributed soon.
 
-## Dataset
-Dowload below two zip files and unzip in `data` folder.
-[images](http://data.cv.snu.ac.kr:8008/webdav/dataset/3DIAS/images.zip)
-[newDataPoints](http://data.cv.snu.ac.kr:8008/webdav/dataset/3DIAS/newDataPoints.zip)
+
+## (Preprocessed) Dataset
+Dowload below two zip files and unzip in `data` folder. [images](http://data.cv.snu.ac.kr:8008/webdav/dataset/3DIAS/images.zip) and [newDataPoints](http://data.cv.snu.ac.kr:8008/webdav/dataset/3DIAS/newDataPoints.zip)
+
 
 ## Training
 To run the training code, 
@@ -86,11 +89,13 @@ To run the training code,
 python train.py --device "0" --config config.json --tag "exp_name"
 ```
 Note that,
-1. the log and model will be saved at `trainer/save_dir` in `config.json`
+1. the log and model will be saved at `trainer/save_dir` in `config.json`. **You MUST change this path to your own path**
 2. `--tag` is for the name of experiment
+3. Now it is set to occupy 12GB in GPU. You can adjust by changing the `batch_size` at `config.json`
+
 
 ## Testing
-For each experiment, there are `config.json` file and `checkpoint-epoch###.pth` file.
+To run the test code, select the options `config.json` and `checkpoint-epoch###.pth` for the specific experiment.
 ```
 python test.py --device "0" --config /path/to/saved_config/config.json --resume "/path/to/saved_model/checkpoint-epoch###.pth"
 ```
