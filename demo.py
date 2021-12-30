@@ -30,7 +30,7 @@ def main(config):
     img = torch.tensor(img).to(device)
 
     # run model
-    polycoeff, origins, A_10x10 = model(img)
+    polycoeff, _, _, A_10x10 = model(img)
 
     # generate meshes
     meshlist, total_mesh, _ = generate_mesh(polycoeff, A_10x10)

@@ -5,15 +5,12 @@ from base import BaseModel
 from model.ResNet import resnet18
 
 class Shape3DModel(BaseModel):
-    def __init__(self, num_param, num_functions, num_classes, model, coeff_filter, a0):
+    def __init__(self, num_param, num_functions, num_classes):
         super().__init__()
         self.num_param = num_param
         self.num_functions = num_functions
         self.num_classes = num_classes
-        self.model = model
         self.num_coeff = 35
-        self.coeff_filter = coeff_filter
-        self.a0 = a0
         self.num_function = [100]
         self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
@@ -202,8 +199,8 @@ class Shape3DModel(BaseModel):
         A_10x10 = torch.cat(A_10x10, dim=-1) # (batch, 10, 10, num_functions)
         
         #### generate logits
-        # logits = F.relu(self.fc1(net_params.view(-1, 35*self.num_functions)))
-        # logits = self.fc2(logits)
+        logits = F.relu(self.fc1(net_params.view(-1, 35*self.num_functions)))
+        logits = self.fc2(logits)
 
         #### generate centers
         origins =  F.relu(self.orgh_1(feature_resnet))
@@ -215,7 +212,7 @@ class Shape3DModel(BaseModel):
         #### geneate coefficients that reflects centers
         polycoeff_center = _gen_polycoeff_center(net_params, origins) # (batch, 35, num_functions)
 
-        return polycoeff_center, origins, A_10x10
+        return polycoeff_center, logits, origins, A_10x10
 
 
 

@@ -1,0 +1,92 @@
+{
+    "name": "Shape3Dgen",
+    "n_gpu": 1,
+    "arch": {
+        "type": "Shape3DModel",
+        "args": {
+            "num_param": 55,
+            "num_functions": 100,
+            "num_classes": 13
+        }
+    },
+    "data_loader": {
+        "type": "Shape3DLoader",
+        "args": {
+            "data_dir": "./data/",
+            "metadata": "metadata.csv",
+            "point_limit": [
+                2000,
+                9000,
+                1000
+            ],
+            "batch_size": 64,
+            "shuffle": true,
+            "num_workers": 6,
+            "task": "train"
+        }
+    },
+    "valid_data_loader": {
+        "type": "Shape3DLoader",
+        "args": {
+            "data_dir": "./data/",
+            "metadata": "metadata.csv",
+            "point_limit": [
+                2000,
+                9000,
+                1000
+            ],
+            "batch_size": 32,
+            "shuffle": true,
+            "num_workers": 6,
+            "task": "val"
+        }
+    },
+    "test_data_loader": {
+        "type": "Shape3DLoader",
+        "args": {
+            "data_dir": "./data/",
+            "metadata": "metadata.csv",
+            "point_limit": [2000, 9000, 1000],
+            "batch_size": 1,
+            "shuffle": false,
+            "training": false,
+            "num_workers": 15,
+            "task": "test"
+        }
+    },
+    "optimizer": {
+        "type": "Adam",
+        "args": {
+            "lr": 0.0001,
+            "weight_decay": 1e-07,
+            "amsgrad": true
+        }
+    },
+    "loss": "total_loss",
+    "loss_weights": {
+        "on": 2.0,
+        "in": 0.1,
+        "out": 10.0,
+        "normvec": 1.0
+    },
+    "metrics": [
+        "IOU",
+        "fscore"
+    ],
+    "lr_scheduler": {
+        "type": "MultiStepLR",
+        "args": {
+            "milestones":[200, 500, 1000, 3000, 4000, 5500],
+            "gamma": 0.3
+        }
+    },
+    "trainer": {
+        "epochs": 5000,
+        "save_dir": "/mnt/disk1/JYChung/3DShapeGen_saved/",
+        "save_period": 10,
+        "verbosity": 2,
+        "monitor": "min val_Total_loss",
+        "early_stop": 1000,
+        "tensorboard": true
+    }
+}

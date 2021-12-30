@@ -59,10 +59,6 @@ class ConfigParser:
         """
         Initialize this class from some cli arguments. Used in train, test.
         """
-        # for opt in options:
-        #     args.add_argument(*opt.flags, default=None, type=opt.type)
-        # if not isinstance(args, tuple):
-        #     args = args.parse_args()
 
         if args.device is not None:
             os.environ["CUDA_VISIBLE_DEVICES"] = args.device
@@ -74,7 +70,6 @@ class ConfigParser:
             assert args.config is not None, msg_no_cfg
             resume = None
             cfg_fname = Path(args.config)
-        assert args.inputimg is not None
 
         config = read_json(cfg_fname)
         if args.config and resume:
@@ -83,7 +78,10 @@ class ConfigParser:
 
         # parse custom cli options into dictionary
         modification = {opt.target : getattr(args, _get_opt_name(opt.flags)) for opt in options}
-        return cls(config, resume, modification, args.tag, args.inputimg, args.visualize)
+        if "inputimg" in args and "visualize" in args:
+            return cls(config, resume, modification, args.tag, args.inputimg, args.visualize)
+        else:
+            return cls(config, resume, modification, args.tag)
 
     def init_obj(self, name, module, *args, **kwargs):
         """
