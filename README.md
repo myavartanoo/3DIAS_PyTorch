@@ -83,16 +83,16 @@ The preprocessed dataset, training, testing code will be distributed soon.
 - Dowload below two zip files and unzip in `data` folder. [images](http://data.cv.snu.ac.kr:8008/webdav/dataset/3DIAS/images.zip) and [newDataPoints](http://data.cv.snu.ac.kr:8008/webdav/dataset/3DIAS/newDataPoints.zip)
 - `metadata.csv` contains the number of data for each class. If you want to train a specific class, use other csv file like in `metadata_03001627` for chair only
 
-## Training
+## Train
 To run the training code, 
 ```
 python train.py --device "0" --config config.json --tag "exp_name"
 ```
 Note that,
-1. the log and model will be saved at `trainer/save_dir` in `config.json`. **You MUST change this path to your own path**
+1. the log and model will be saved at `trainer/save_dir` in `config.json`. **You MUST change this to your own path**
 2. `--tag` is for the name of experiment
 
-#### GPU memory issue
+### GPU memory issue
 There is large tensor product in PI_funcs_generator() line 13,
 > PI_funcs = (coeff.unsqueeze(dim=1) * I.unsqueeze(dim=3)).sum(dim=2)\
 
@@ -103,7 +103,7 @@ There might be two solutions for the product of large tensors in the GPUs with s
 3. Use DDP (I didn't test this)
 
 
-## Testing
+## Test
 To run the test code, select the options `config.json` and `checkpoint-epoch###.pth` for the specific experiment.
 ```
 python test.py --device "0" --config /path/to/saved_config/config.json --resume "/path/to/saved_model/checkpoint-epoch###.pth" --tag "exp_name"
