@@ -1,5 +1,5 @@
 # 3DIAS_Pytorch
-This repository contains the official code to reproduce the results from the paper
+This repository contains the official code to reproduce the results from the paper:
 
 **3DIAS: 3D Shape Reconstruction with Implicit Algebraic Surfaces (ICCV 2021)**
 
