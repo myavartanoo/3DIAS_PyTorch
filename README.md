@@ -3,7 +3,7 @@ This repository contains the official code to reproduce the results from the pap
 
 **3DIAS: 3D Shape Reconstruction with Implicit Algebraic Surfaces (ICCV 2021)**
 
-\[[project page](https://myavartanoo.github.io/3dias/)\] \[[arXiv](https://arxiv.org/abs/2108.08653)\] 
+\[[project page](https://myavartanoo.github.io/3dias/)\] \[[arXiv](https://arxiv.org/abs/2108.08653)\] \[[presentation](https://www.youtube.com/watch?v=f_DYAwdkUa4&list=PLhCEMvtuQ92VjjKVfnUUaSFJGJJXM2ulN)\] 
 
 <p align="center">
 <img src="source/airplane.gif" width="45%" height="45%"/> <img src="source/lamp.gif" width="45%" height="45%"/> 
