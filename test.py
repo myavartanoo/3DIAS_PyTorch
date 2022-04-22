@@ -57,7 +57,7 @@ def main(config):
                 if key!='directory':
                     target[key] = target[key].to('cuda') 
 
-            polycoeff, _, _, A_10x10 = model(img_H)
+            polycoeff, _, A_10x10 = model(img_H)
 
             polyorder = torch.from_numpy(gen_polynomial_orders(4)).to('cuda')
             PI_funcs_inout = PI_funcs_generator(target['inoutpts'], polycoeff, polyorder)
