@@ -199,8 +199,8 @@ class Shape3DModel(BaseModel):
         A_10x10 = torch.cat(A_10x10, dim=-1) # (batch, 10, 10, num_functions)
         
         #### generate logits
-        logits = F.relu(self.fc1(net_params.view(-1, 35*self.num_functions)))
-        logits = self.fc2(logits)
+        #logits = F.relu(self.fc1(net_params.view(-1, 35*self.num_functions)))
+        #logits = self.fc2(logits)
 
         #### generate centers
         origins =  F.relu(self.orgh_1(feature_resnet))
@@ -212,7 +212,7 @@ class Shape3DModel(BaseModel):
         #### geneate coefficients that reflects centers
         polycoeff_center = _gen_polycoeff_center(net_params, origins) # (batch, 35, num_functions)
 
-        return polycoeff_center, logits, origins, A_10x10
+        return polycoeff_center, origins, A_10x10
 
 
 
