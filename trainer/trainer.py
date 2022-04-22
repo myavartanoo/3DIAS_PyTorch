@@ -27,7 +27,7 @@ class Trainer(BaseTrainer):
                 target[key] = target[key].to(self.device)
 
             self.optimizer.zero_grad()
-            polycoeff, logits, _, _ = self.model(img_H) # data: images, output: (params, R, logits)
+            polycoeff, _, _ = self.model(img_H) # data: images, output: (params, R, logits)
             loss, loss_valdict, PI_value_inout = self.criterion(polycoeff, target, self.config['loss_weights'])
             loss.backward()
             self.optimizer.step()
@@ -76,7 +76,7 @@ class Trainer(BaseTrainer):
                     if target[key].size==0: print(target['directory']); raise
                     target[key] = target[key].to(self.device)
 
-                polycoeff, _, _, _ = self.model(img_H)
+                polycoeff, _, _ = self.model(img_H)
                 loss, loss_valdict, PI_value_inout = self.criterion(polycoeff, target, self.config['loss_weights'])
 
                 self.writer.set_step((epoch - 1) * len(self.valid_data_loader) + batch_idx, 'valid')
